@@ -64,6 +64,12 @@
                             <h3 class="mb-5">Sign up</h3>
 
                             <div class="form-outline mb-4">
+                                <input type="text" id="typeNameX-2" class="form-control form-control-lg" />
+                                <label class="form-label" for="typeNameX-2">First And Last Name</label>
+                            </div>
+
+
+                            <div class="form-outline mb-4">
                                 <input type="email" id="typeEmailX-2" class="form-control form-control-lg" />
                                 <label class="form-label" for="typeEmailX-2">Email</label>
                             </div>
