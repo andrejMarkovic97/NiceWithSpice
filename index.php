@@ -39,7 +39,8 @@
                             </div>
 
                             <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
-                            <button class="btn btn-primary btn-lg btn-block" type="submit">Register</button>
+                            <button class="btn btn-primary btn-lg btn-block" data-bs-toggle="modal" data-bs-target="#exampleModal">Sign up</button>
+
 
                             <hr class="my-4">
 
@@ -50,6 +51,38 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <!--<h5 class="modal-title" id="exampleModalLabel"></h5>-->
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h3 class="mb-5">Sign up</h3>
+
+                        <div class="form-outline mb-4">
+                            <input type="email" id="typeEmailX-2" class="form-control form-control-lg" />
+                            <label class="form-label" for="typeEmailX-2">Email</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <input type="password" id="typePasswordX-2" class="form-control form-control-lg" />
+                            <label class="form-label" for="typePasswordX-2">Password</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <input type="password" id="typePasswordX-2" class="form-control form-control-lg" />
+                            <label class="form-label" for="typePasswordX-2">Retype Password</label>
+                        </div>
+
+
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">Sign up</button>
+
+                    </div>
+                </div>
+            </div>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
