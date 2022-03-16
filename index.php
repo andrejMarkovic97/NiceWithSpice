@@ -56,30 +56,31 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <!--<h5 class="modal-title" id="exampleModalLabel"></h5>-->
+
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <h3 class="mb-5">Sign up</h3>
+                        <div class="card-body p-5 text-center">
+                            <h3 class="mb-5">Sign up</h3>
 
-                        <div class="form-outline mb-4">
-                            <input type="email" id="typeEmailX-2" class="form-control form-control-lg" />
-                            <label class="form-label" for="typeEmailX-2">Email</label>
+                            <div class="form-outline mb-4">
+                                <input type="email" id="typeEmailX-2" class="form-control form-control-lg" />
+                                <label class="form-label" for="typeEmailX-2">Email</label>
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <input type="password" id="typePasswordX-2" class="form-control form-control-lg" />
+                                <label class="form-label" for="typePasswordX-2">Password</label>
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <input type="password" id="typePasswordX-2" class="form-control form-control-lg" />
+                                <label class="form-label" for="typePasswordX-2">Retype Password</label>
+                            </div>
+
+
+                            <button class="btn btn-primary btn-lg btn-block" type="submit">Sign up</button>
                         </div>
-
-                        <div class="form-outline mb-4">
-                            <input type="password" id="typePasswordX-2" class="form-control form-control-lg" />
-                            <label class="form-label" for="typePasswordX-2">Password</label>
-                        </div>
-
-                        <div class="form-outline mb-4">
-                            <input type="password" id="typePasswordX-2" class="form-control form-control-lg" />
-                            <label class="form-label" for="typePasswordX-2">Retype Password</label>
-                        </div>
-
-
-                        <button class="btn btn-primary btn-lg btn-block" type="submit">Sign up</button>
-
                     </div>
                 </div>
             </div>
