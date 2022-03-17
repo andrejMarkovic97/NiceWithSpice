@@ -58,7 +58,7 @@
     </nav>
     </nav>
 
-    <section class="main">
+    <section class="landing-main">
         <div class="container py-5">
             <div class="row py-4">
                 <div class="col-lg-7 pt-5 text-center">
@@ -115,11 +115,11 @@
                             </p>
 
                         </div>
-                        <!-- Grid column -->
 
-                        <!-- Grid column -->
+
+
                         <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-                            <!-- Links -->
+
                             <h6 class="text-uppercase fw-bold mb-4">
                                 Useful links
                             </h6>
@@ -136,11 +136,11 @@
                                 <a href="#!" class="text-reset">Help</a>
                             </p>
                         </div>
-                        <!-- Grid column -->
 
-                        <!-- Grid column -->
+
+
                         <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-                            <!-- Links -->
+
                             <h6 class="text-uppercase fw-bold mb-4">
                                 Contact
                             </h6>
