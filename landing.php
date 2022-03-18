@@ -43,7 +43,7 @@
 
                 </ul>
                 <span class="cart">
-                    <a class="nav-link active" href="#">
+                    <a class="nav-link active" href="cart.php">
                         <i class="bi bi-cart3"></i>
                     </a>
                 </span>
@@ -64,7 +64,7 @@
                 <div class="col-lg-7 pt-5 text-center">
                     <h1 class="landing-h1">The plural of spouse is spice</h1>
                     <div class="btnbuylp">
-                        <button class="btnlp mt-3">Buy now</button>
+                        <a href="store.php"><button class="btnlp mt-3">Buy now</button></a>
                     </div>
                 </div>
             </div>
@@ -72,7 +72,7 @@
     </section>
 
 
-    <section class="footer" id="footer">
+    <section class=" footer" id="footer">
 
         <footer class="text-center text-lg-start bg-light text-muted">
 
