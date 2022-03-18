@@ -80,12 +80,12 @@
 .store-picture{
     background-image: url('./img/storePic.jpg');
     background-size: cover;
-  background-position: 50% 50%;
+    background-position: 50% 50%;
    height: 50vh;
    width: 100%;
-   margin-bottom: 30px;
    border-color: black;
 }
+
 
 
 

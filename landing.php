@@ -29,13 +29,13 @@
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul class="navbar-nav m-auto my-2 my-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" href='#'>Home</a>
+                        <a class="nav-link active" href='landing.php'>Home</a>
                     </li>
                     <li class=" nav-item">
-                        <a class="nav-link" href="#">Store</a>
+                        <a class="nav-link" href="store.php">Store</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="#footer">
                             Contact us
                         </a>
 
@@ -72,7 +72,7 @@
     </section>
 
 
-    <section class="footer">
+    <section class="footer" id="footer">
 
         <footer class="text-center text-lg-start bg-light text-muted">
 

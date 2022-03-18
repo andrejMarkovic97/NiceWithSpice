@@ -27,13 +27,13 @@
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul class="navbar-nav m-auto my-2 my-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" href='#'>Home</a>
+                        <a class="nav-link active" href='landing.php'>Home</a>
                     </li>
                     <li class=" nav-item">
-                        <a class="nav-link" href="#">Store</a>
+                        <a class="nav-link" href="store.php">Store</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="#footer">
                             Contact us
                         </a>
 
@@ -58,7 +58,7 @@
 
     <section class="main">
 
-        <div class="store-picture p-5 text-center bg-image">
+        <div class="store-picture p-5 mb-3 text-center bg-image">
 
             <div class="d-flex justify-content-center align-items-center h-100">
                 <div class="text-white">
@@ -68,7 +68,8 @@
         </div>
         </div>
 
-        <div class="dropdown">
+
+        <div class="dropdown m-0">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
                 Sort
             </button>
@@ -79,11 +80,132 @@
                 <li><button class="dropdown-item" type="button">Product title, Z-A</button></li>
             </ul>
         </div>
+
+        <section style="background-color: #eee;">
+            <div class="container py-5">
+                <div class="row">
+                    <div class="col-md-12 col-lg-4 mb-4 mb-lg-0">
+                        <div class="card">
+
+                            <img src="./img/all_purpose.jpg" class="card-img-top" alt="All purpose" />
+                            <div class="card-body">
+
+                                <div class="d-flex justify-content-between mb-3">
+                                    <h5 class="mb-0">All purpose spice</h5>
+                                    <h5 class="text-dark mb-0">150 RSD</h5>
+                                </div>
+
+                                <div class="d-flex justify-content-between mb-2">
+                                    <button type="button" class="btn btn-outline-danger">Add to cart</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-4 mb-4 mb-lg-0">
+                        <div class="card">
+
+                            <img src="./img/himalayan_salt.jpg" class="card-img-top" alt="Himalayan salt" />
+                            <div class="card-body">
+
+                                <div class="d-flex justify-content-between mb-3">
+                                    <h5 class="mb-0">Himalayan salt</h5>
+                                    <h5 class="text-dark mb-0">300 RSD</h5>
+                                </div>
+
+                                <div class="d-flex justify-content-between mb-2">
+                                    <button type="button" class="btn btn-outline-danger">Add to cart</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-4 mb-4 mb-lg-0">
+                        <div class="card">
+
+                            <img src="./img/mixed_herbs.jpg" class="card-img-top" alt="Mixed herbs" />
+                            <div class="card-body">
+
+                                <div class="d-flex justify-content-between mb-3">
+                                    <h5 class="mb-0">Mixed herbs</h5>
+                                    <h5 class="text-dark mb-0">99 RSD</h5>
+                                </div>
+
+                                <div class="d-flex justify-content-between mb-2">
+                                    <button type="button" class="btn btn-outline-danger">Add to cart</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container py-5">
+                <div class="row">
+                    <div class="col-md-12 col-lg-4 mb-4 mb-lg-0">
+                        <div class="card">
+
+                            <img src="./img/paprika.jpg" class="card-img-top" alt="Paprika" />
+                            <div class="card-body">
+
+                                <div class="d-flex justify-content-between mb-3">
+                                    <h5 class="mb-0">Paprika</h5>
+                                    <h5 class="text-dark mb-0">100 RSD</h5>
+                                </div>
+
+                                <div class="d-flex justify-content-between mb-2">
+                                    <button type="button" class="btn btn-outline-danger">Add to cart</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-4 mb-4 mb-lg-0">
+                        <div class="card">
+
+                            <img src="./img/chilli.jpg" class="card-img-top" alt="Chilli" />
+                            <div class="card-body">
+
+                                <div class="d-flex justify-content-between mb-3">
+                                    <h5 class="mb-0">Chilli</h5>
+                                    <h5 class="text-dark mb-0">100 RSD</h5>
+                                </div>
+
+                                <div class="d-flex justify-content-between mb-2">
+                                    <button type="button" class="btn btn-outline-danger">Add to cart</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-4 mb-4 mb-lg-0">
+                        <div class="card">
+
+                            <img src="./img/rainbow_peppercorn.jpg" class="card-img-top" alt="Rainbow peppercorn" />
+                            <div class="card-body">
+
+                                <div class="d-flex justify-content-between mb-3">
+                                    <h5 class="mb-0">Rainbow peppercorn</h5>
+                                    <h5 class="text-dark mb-0">250 RSD</h5>
+                                </div>
+
+                                <div class="d-flex justify-content-between mb-2">
+                                    <button type="button" class="btn btn-outline-danger">Add to cart</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
     </section>
 
 
 
-    <section class="footer">
+    <section class="footer" id="footer">
 
         <footer class="text-center text-lg-start bg-light text-muted">
 
@@ -177,7 +299,7 @@
         </footer>
 
     </section>
-
+    <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 
