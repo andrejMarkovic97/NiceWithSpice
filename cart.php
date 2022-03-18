@@ -105,7 +105,7 @@
                         <div class="card mb-4">
                             <div class="card-body p-4 d-flex flex-row">
                                 <div class="form-outline flex-fill">
-                                    <label class="form-label" for="form1">Discound code</label>
+                                    <label class="form-label" for="form1">Discount code</label>
                                     <input type="text" id="form1" class="form-control form-control-lg" />
 
                                 </div>
@@ -115,11 +115,11 @@
 
                         <div class="card">
                             <div class="card-body d-flex flex-row">
-                                <div class="flex-fill">
-                                    <strong>
-                                        <h4 class="d-flex">Amount : </h4>
-                                        <span class="amount"></span>
-                                    </strong>
+                                <div class="d-flex flex-fill mt-3 mb-1">
+                                    <h5 class="mb-0">Amount:</h5>
+                                    <span class="amount ms-3">
+                                        <h5 id="amount" class="text-dark"> 100 RSD</h5>
+                                    </span>
 
                                 </div>
 
