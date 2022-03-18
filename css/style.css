@@ -50,7 +50,7 @@
     font-size: 25px;
 }
 .landing-main{
-   background-image: url("./img/spice.jpg");
+   background-image: url("/nicewithspice/img/spice.jpg");
   background-size: cover;
   background-position: 50% 50%;
    height: 100vh;
@@ -78,7 +78,7 @@
     }
 
 .store-picture{
-    background-image: url('./img/storePic.jpg');
+    background-image: url('/nicewithspice/img/storePic.jpg');
     background-size: cover;
     background-position: 50% 50%;
    height: 50vh;

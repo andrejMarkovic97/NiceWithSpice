@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Store</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/style.css">>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -88,7 +88,7 @@
                     <div class="col-md-12 col-lg-4 mb-4 mb-lg-0">
                         <div class="card">
 
-                            <img src="./img/all_purpose.jpg" class="card-img-top" alt="All purpose" />
+                            <img src="/nicewithspice/img/all_purpose.jpg" class="card-img-top" alt="All purpose" />
                             <div class="card-body">
 
                                 <div class="d-flex justify-content-between mb-3">
@@ -106,7 +106,7 @@
                     <div class="col-md-12 col-lg-4 mb-4 mb-lg-0">
                         <div class="card">
 
-                            <img src="./img/himalayan_salt.jpg" class="card-img-top" alt="Himalayan salt" />
+                            <img src="/nicewithspice/img/himalayan_salt.jpg" class="card-img-top" alt="Himalayan salt" />
                             <div class="card-body">
 
                                 <div class="d-flex justify-content-between mb-3">
@@ -124,7 +124,7 @@
                     <div class="col-md-12 col-lg-4 mb-4 mb-lg-0">
                         <div class="card">
 
-                            <img src="./img/mixed_herbs.jpg" class="card-img-top" alt="Mixed herbs" />
+                            <img src="/nicewithspice/img/mixed_herbs.jpg" class="card-img-top" alt="Mixed herbs" />
                             <div class="card-body">
 
                                 <div class="d-flex justify-content-between mb-3">
@@ -146,7 +146,7 @@
                     <div class="col-md-12 col-lg-4 mb-4 mb-lg-0">
                         <div class="card">
 
-                            <img src="./img/paprika.jpg" class="card-img-top" alt="Paprika" />
+                            <img src="/nicewithspice/img/paprika.jpg" class="card-img-top" alt="Paprika" />
                             <div class="card-body">
 
                                 <div class="d-flex justify-content-between mb-3">
@@ -164,7 +164,7 @@
                     <div class="col-md-12 col-lg-4 mb-4 mb-lg-0">
                         <div class="card">
 
-                            <img src="./img/chilli.jpg" class="card-img-top" alt="Chilli" />
+                            <img src="/nicewithspice/img/chilli.jpg" class="card-img-top" alt="Chilli" />
                             <div class="card-body">
 
                                 <div class="d-flex justify-content-between mb-3">
@@ -182,7 +182,7 @@
                     <div class="col-md-12 col-lg-4 mb-4 mb-lg-0">
                         <div class="card">
 
-                            <img src="./img/rainbow_peppercorn.jpg" class="card-img-top" alt="Rainbow peppercorn" />
+                            <img src="/nicewithspice/img/rainbow_peppercorn.jpg" class="card-img-top" alt="Rainbow peppercorn" />
                             <div class="card-body">
 
                                 <div class="d-flex justify-content-between mb-3">
