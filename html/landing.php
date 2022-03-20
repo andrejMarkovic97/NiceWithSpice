@@ -24,7 +24,7 @@
         <div class="container">
             <a class="navbar-brand" href="#">Nice With Spice</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="bi bi-chevron-double-down"></i></i>
+                <i class="bi bi-chevron-double-down"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul class="navbar-nav m-auto my-2 my-lg-0">
@@ -64,7 +64,8 @@
                 <div class="col-lg-7 pt-5 text-center">
                     <h1 class="landing-h1">The plural of spouse is spice</h1>
                     <div class="btnbuylp">
-                        <a href="store.php"><button class="btnlp mt-3">Buy now</button></a>
+                        <a href="store.php">
+                            <button class="btnlp mt-3">Buy now</button></a>
                     </div>
                 </div>
             </div>
@@ -97,7 +98,7 @@
                         </div>
 
                         <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                            <!-- Links -->
+
                             <h6 class="text-uppercase fw-bold mb-4">
                                 Social media
                             </h6>
