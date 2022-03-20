@@ -3,23 +3,25 @@
 class Transaction
 {
     private int $id;
-    private Date $date;
-    private double $amount;
+    private DateTime $date;
+    private float $amount;
     private User $user;
+    private array $transactionList = array();
 
     /**
      * @param int $id
-     * @param Date $date
+     * @param DateTime $date
      * @param float $amount
      * @param User $user
+     * @param array $transactionList
      */
-    public function __construct(int $id, Date $date, float $amount, User $user)
+    public function __construct(int $id, DateTime $date, float $amount, User $user, array $transactionList)
     {
         $this->id = $id;
         $this->date = $date;
         $this->amount = $amount;
         $this->user = $user;
-
+        $this->transactionList = $transactionList;
     }
 
     /**
@@ -39,17 +41,17 @@ class Transaction
     }
 
     /**
-     * @return Date
+     * @return DateTime
      */
-    public function getDate(): Date
+    public function getDate(): DateTime
     {
         return $this->date;
     }
 
     /**
-     * @param Date $date
+     * @param DateTime $date
      */
-    public function setDate(Date $date): void
+    public function setDate(DateTime $date): void
     {
         $this->date = $date;
     }
@@ -85,5 +87,23 @@ class Transaction
     {
         $this->user = $user;
     }
+
+    /**
+     * @return array
+     */
+    public function getTransactionList(): array
+    {
+        return $this->transactionList;
+    }
+
+    /**
+     * @param array $transactionList
+     */
+    public function setTransactionList(array $transactionList): void
+    {
+        $this->transactionList = $transactionList;
+    }
+
+
 
 }

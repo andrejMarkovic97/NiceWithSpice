@@ -3,19 +3,19 @@
 class Product
 {
     private int $id;
-    private string $name;
-    private double $price;
+    private Transaction $transaction;
+    private Product $product;
 
     /**
      * @param int $id
-     * @param string $name
-     * @param float $price
+     * @param Transaction $transaction
+     * @param Product $product
      */
-    public function __construct(int $id, string $name, float $price)
+    public function __construct(int $id, Transaction $transaction, Product $product)
     {
         $this->id = $id;
-        $this->name = $name;
-        $this->price = $price;
+        $this->transaction = $transaction;
+        $this->product = $product;
     }
 
     /**
@@ -35,35 +35,35 @@ class Product
     }
 
     /**
-     * @return string
+     * @return Transaction
      */
-    public function getName(): string
+    public function getTransaction(): Transaction
     {
-        return $this->name;
+        return $this->transaction;
     }
 
     /**
-     * @param string $name
+     * @param Transaction $transaction
      */
-    public function setName(string $name): void
+    public function setTransaction(Transaction $transaction): void
     {
-        $this->name = $name;
+        $this->transaction = $transaction;
     }
 
     /**
-     * @return float
+     * @return Product
      */
-    public function getPrice(): float
+    public function getProduct(): Product
     {
-        return $this->price;
+        return $this->product;
     }
 
     /**
-     * @param float $price
+     * @param Product $product
      */
-    public function setPrice(float $price): void
+    public function setProduct(Product $product): void
     {
-        $this->price = $price;
+        $this->product = $product;
     }
 
 
