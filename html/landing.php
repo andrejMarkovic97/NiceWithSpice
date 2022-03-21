@@ -54,8 +54,8 @@
                             <i class="bi bi-person-circle bi-4x"></i>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">Update account</a></li>
-                            <li><a class="dropdown-item" href="#">Delete account</a></li>
+                            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Update account</a></li>
+                            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteAccount">Delete account</a></li>
                             <li><a class="dropdown-item" href="#">Log out</a></li>
                         </ul>
                     </span>
@@ -71,7 +71,77 @@
                 </form>
             </div>
         </div>
-    </nav>
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card-body p-5 text-center">
+                            <h3 class="mb-5">Update account info</h3>
+                            <form method="POST" action="">
+                                <div class="form-outline mb-4">
+                                    <input type="text" name="name" id="typeNameX-2" class="form-control form-control-lg" required />
+                                    <label class="form-label" for="typeNameX-2">First And Last Name</label>
+                                </div>
+
+
+                                <div class="form-outline mb-4">
+                                    <input type="email" name="email" id="typeEmailX-2" class="form-control form-control-lg" required />
+                                    <label class="form-label" for="typeEmailX-2">Email</label>
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <input type="password" name="password" id="typePasswordX-2" class="form-control form-control-lg" required />
+                                    <label class="form-label" for="typePasswordX-2">Password</label>
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <input type="password" id="typePasswordX-2" class="form-control form-control-lg" required />
+                                    <label class="form-label" for="typePasswordX-2">Retype Password</label>
+                                </div>
+
+
+                                <button class="btn btn-primary btn-lg btn-block" name="submit" type="submit">Confirm</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="deleteAccount" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card-body p-5 text-center">
+                            <h3 class="mb-5">Delete account</h3>
+                            <h5 class="mb-5">Are you sure?</h5>
+                            <form method="POST" action="">
+
+                                <div class="form-outline mb-4">
+                                    <input type="password" name="password" id="typePasswordX-2" class="form-control form-control-lg" required />
+                                    <label class="form-label" for="typePasswordX-2">Password</label>
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <input type="password" id="typePasswordX-2" class="form-control form-control-lg" required />
+                                    <label class="form-label" for="typePasswordX-2">Retype Password</label>
+                                </div>
+
+
+                                <button class="btn btn-danger btn-lg btn-block" name="submit" type="submit">Confirm</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </nav>
 
     <section class="landing-main">

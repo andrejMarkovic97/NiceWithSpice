@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)http://localhost/nicewithspice/html/myaccount.php -->
+<html lang="en"><link type="text/css" id="dark-mode" rel="stylesheet" href="http://localhost/nicewithspice/html/myaccount.php"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Required meta tags -->
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="./Home page_files/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="./Home page_files/bootstrap-icons.css">
+    <link rel="stylesheet" href="./Home page_files/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="./Home page_files/css2" rel="stylesheet">
+    <title>Home page</title>
+</head>
+
+<body class="vsc-initialized">
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="http://localhost/nicewithspice/html/myaccount.php#">Nice With Spice</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="bi bi-chevron-double-down"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav m-auto my-2 my-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="http://localhost/nicewithspice/html/landing.php">Home</a>
+                    </li>
+                    <li class=" nav-item">
+                        <a class="nav-link" href="http://localhost/nicewithspice/html/store.php">Store</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost/nicewithspice/html/myaccount.php#footer">
+                            Contact us
+                        </a>
+
+                    </li>
+
+                </ul>
+                <span class="cart">
+                    <a class="nav-link active" href="http://localhost/nicewithspice/html/cart.php">
+                        <i class="bi bi-cart3"></i>
+                    </a>
+                </span>
+
+                <span class="cart">
+                    <a class="nav-link active" href="http://localhost/nicewithspice/html/myaccount.php">
+                        <i class="bi bi-person-circle"></i>
+                    </a>
+
+                </span>
+
+
+
+
+
+                <form class="d-flex">
+
+                    <input class="px-2 search" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn0" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    
+
+    <section class="mainAccount" style="margin-top: 40px;">
+
+
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6">
+                    <div class="card shadow-2-strong" style="border-radius: 1rem;">
+
+                        <div class="card-body p-5 text-center">
+
+                            <h3 class="mb-5">Update Email</h3>
+                            <form method="POST" action="http://localhost/nicewithspice/html/myaccount.php">
+                                <div class="form-outline mb-4">
+                                    <input type="email" name="email" id="typeEmailX-2" class="form-control form-control-lg" required="">
+                                    <label class="form-label" for="typeEmailX-2" required="">Email</label>
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <input type="email" name="NewEmail" id="typeEmailX-2" class="form-control form-control-lg" required="">
+                                    <label class="form-label" for="typeEmailX-2" required="">New Email</label>
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <input type="password" name="password" id="typePasswordX-2" class="form-control form-control-lg" required="">
+                                    <label class="form-label" for="typePasswordX-2">Password</label>
+                                </div>
+
+
+                                <button class="btn btn-primary btn-lg btn-block" name="submit" type="submit">Confirm</button>
+
+
+
+                                <hr class="my-4">
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-12">
+                    <div class="card shadow-2-strong" style="border-radius: 1rem;">
+
+                        <div class="card-body p-5 text-center">
+
+                            <h3 class="mb-5">Update Password</h3>
+                            <form method="POST" action="http://localhost/nicewithspice/html/myaccount.php">
+                                <div class="form-outline mb-4">
+                                    <input type="password" name="password" id="typeEmailX-2" class="form-control form-control-lg" required="">
+                                    <label class="form-label" for="typeEmailX-2" required="">Password</label>
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <input type="password" name="newPassword" id="typePasswordX-2" class="form-control form-control-lg" required="">
+                                    <label class="form-label" for="typePasswordX-2">New password</label>
+                                </div>
+
+
+                                <button class="btn btn-primary btn-lg btn-block" name="submit" type="submit">Login</button>
+
+
+
+                                <hr class="my-4">
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="card shadow-2-strong" style="border-radius: 1rem;">
+
+                        <div class="card-body p-5 text-center">
+
+                            <h3 class="mb-5">Delete account</h3>
+                            <form method="POST" action="http://localhost/nicewithspice/html/myaccount.php">
+                                <div class="form-outline mb-4">
+                                    <input type="email" name="email" id="typeEmailX-2" class="form-control form-control-lg" required="">
+                                    <label class="form-label" for="typeEmailX-2" required="">Email</label>
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <input type="password" name="password" id="typePasswordX-2" class="form-control form-control-lg" required="">
+                                    <label class="form-label" for="typePasswordX-2">Password</label>
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <input type="password" name="password" id="typePasswordX-2" class="form-control form-control-lg" required="">
+                                    <label class="form-label" for="typePasswordX-2">Password</label>
+                                </div>
+
+
+                                <button class="btn btn-primary btn-lg btn-block" name="submit" type="submit">Login</button>
+
+
+
+                                <hr class="my-4">
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+    </section>
+
+    <section class=" footer" id="footer">
+
+        <footer class="text-center text-lg-start bg-light text-muted">
+
+            <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+
+
+            </section>
+
+            <section class="">
+                <div class="container text-center text-md-start mt-5">
+
+                    <div class="row mt-3">
+
+                        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                <i class="fas fa-gem me-3"></i>Nice With Spice
+                            </h6>
+                            <p>
+                                Geared toward making cooking a more enjoyable experience for you!
+                            </p>
+                        </div>
+
+                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                Social media
+                            </h6>
+                            <p>
+                                <a href="http://localhost/nicewithspice/html/myaccount.php#!" class="text-reset"><i class="bi bi-instagram"> Instagram</i></a>
+                            </p>
+                            <p>
+                                <a href="http://localhost/nicewithspice/html/myaccount.php#!" class="text-reset"><i class="bi bi-facebook"> Facebook</i></a>
+                            </p>
+                            <p>
+                                <a href="http://localhost/nicewithspice/html/myaccount.php#!" class="text-reset"><i class="bi bi-twitter"> Twitter</i></a>
+                            </p>
+                            <p>
+                                <a href="http://localhost/nicewithspice/html/myaccount.php#!" class="text-reset"><i class="bi bi-linkedin"> LinkedIn</i></a>
+                            </p>
+
+                        </div>
+
+
+
+                        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                Useful links
+                            </h6>
+                            <p>
+                                <a href="http://localhost/nicewithspice/html/myaccount.php#!" class="text-reset">Pricing</a>
+                            </p>
+                            <p>
+                                <a href="http://localhost/nicewithspice/html/myaccount.php#!" class="text-reset">Settings</a>
+                            </p>
+                            <p>
+                                <a href="http://localhost/nicewithspice/html/myaccount.php#!" class="text-reset">Orders</a>
+                            </p>
+                            <p>
+                                <a href="http://localhost/nicewithspice/html/myaccount.php#!" class="text-reset">Help</a>
+                            </p>
+                        </div>
+
+
+
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                Contact
+                            </h6>
+                            <p>Belgrade, Vojvode Stepe 355</p>
+                            <p>nicewithspice@gmail.com</p>
+                            <p>+ 381 11 123 456</p>
+                            <p>+381 61 123 6789</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+
+
+
+            <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+                © 2022 Copyright:
+                <p>Andrej Marković</p>
+            </div>
+
+        </footer>
+
+    </section>
+    <script src="./Home page_files/bootstrap.bundle.min.js.download" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+
+
+
+</body></html>
