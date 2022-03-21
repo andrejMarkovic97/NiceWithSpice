@@ -49,6 +49,11 @@
 .cart{
     font-size: 25px;
 }
+#id{
+    font-size: 25px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
 .landing-main{
    background-image: url("/nicewithspice/img/spice.jpg");
   background-size: cover;
@@ -86,7 +91,10 @@
    width: 100%;
    border-color: black;
 }
-
+.myAcc{
+    height:100px;
+    width: 100px;
+}
 
 
 

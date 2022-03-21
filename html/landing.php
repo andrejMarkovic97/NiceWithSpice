@@ -48,6 +48,22 @@
                     </a>
                 </span>
 
+                <div class="dropdown">
+                    <span class="cart">
+                        <a class="nav-link active dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" style="color:black;">
+                            <i class="bi bi-person-circle bi-4x"></i>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">Update account</a></li>
+                            <li><a class="dropdown-item" href="#">Delete account</a></li>
+                            <li><a class="dropdown-item" href="#">Log out</a></li>
+                        </ul>
+                    </span>
+
+                </div>
+
+
+
                 <form class="d-flex">
 
                     <input class="px-2 search" type="search" placeholder="Search" aria-label="Search">

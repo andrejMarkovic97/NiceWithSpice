@@ -20,11 +20,12 @@
 
 <body>
 
+
     <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand" href="#">Nice With Spice</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="bi bi-chevron-double-down"></i></i>
+                <i class="bi bi-chevron-double-down"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul class="navbar-nav m-auto my-2 my-lg-0">
@@ -43,10 +44,26 @@
 
                 </ul>
                 <span class="cart">
-                    <a class="nav-link active" href="#">
+                    <a class="nav-link active" href="cart.php">
                         <i class="bi bi-cart3"></i>
                     </a>
                 </span>
+
+                <div class="dropdown">
+                    <span class="cart">
+                        <a class="nav-link active dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" style="color:black;">
+                            <i class="bi bi-person-circle bi-4x"></i>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">Update account</a></li>
+                            <li><a class="dropdown-item" href="#">Delete account</a></li>
+                            <li><a class="dropdown-item" href="#">Log out</a></li>
+                        </ul>
+                    </span>
+
+                </div>
+
+
 
                 <form class="d-flex">
 
