@@ -1,6 +1,6 @@
 <?php
 
-class Product
+class TransactionItem
 {
     private int $id;
     private Transaction $transaction;
@@ -11,7 +11,7 @@ class Product
      * @param Transaction $transaction
      * @param Product $product
      */
-    public function __construct(int $id, Transaction $transaction, Product $product)
+    public function __construct(int $id = 0, Transaction $transaction = null, Product $product = null)
     {
         $this->id = $id;
         $this->transaction = $transaction;
@@ -65,6 +65,4 @@ class Product
     {
         $this->product = $product;
     }
-
-
 }

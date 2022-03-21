@@ -1,3 +1,33 @@
+<?php
+require "../dbBroker.php";
+require "../models/User.php";
+
+session_start();
+if (isset($_POST['email']) && isset($_POST['password'])) {
+    $email = $_POST['email'];
+    $pass = $_POST['password'];
+
+    $user = new User(1, "Andrej", $email, $pass);
+
+    $odg = User::loginUser($user, $conn);
+
+    if ($odg->num_rows == 1) {
+        $_SESSION['user_id'] = $user->getId();
+        header('Location: landing.php');
+        exit();
+    } else {
+        echo '<script>
+        alert("Invalid credentials !");
+        </script>';
+    }
+}
+
+
+
+
+
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -18,35 +48,31 @@
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-12 col-md-8 col-lg-6 col-xl-5">
                     <div class="card shadow-2-strong" style="border-radius: 1rem;">
+
                         <div class="card-body p-5 text-center">
 
                             <h3 class="mb-5">Sign in</h3>
+                            <form method="POST" action="">
+                                <div class="form-outline mb-4">
+                                    <input type="email" name="email" id="typeEmailX-2" class="form-control form-control-lg" required />
+                                    <label class="form-label" for="typeEmailX-2" required>Email</label>
+                                </div>
 
-                            <div class="form-outline mb-4">
-                                <input type="email" id="typeEmailX-2" class="form-control form-control-lg" />
-                                <label class="form-label" for="typeEmailX-2">Email</label>
-                            </div>
-
-                            <div class="form-outline mb-4">
-                                <input type="password" id="typePasswordX-2" class="form-control form-control-lg" />
-                                <label class="form-label" for="typePasswordX-2">Password</label>
-                            </div>
+                                <div class="form-outline mb-4">
+                                    <input type="password" name="password" id="typePasswordX-2" class="form-control form-control-lg" required />
+                                    <label class="form-label" for="typePasswordX-2">Password</label>
+                                </div>
 
 
-                            <div class="form-check d-flex justify-content-start mb-4">
-                                <input class="form-check-input" type="checkbox" value="" id="form1Example3" />
-                                <label class="form-check-label" for="form1Example3"> Remember password </label>
-                            </div>
+                                <button class="btn btn-primary btn-lg btn-block" name="submit" type="submit">Login</button>
 
-                            <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+
+
+                                <hr class="my-4">
+
+                            </form>
+                            <h4 class="mb-4">No account? Register:</h4>
                             <button class="btn btn-primary btn-lg btn-block" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Sign up</button>
-
-
-
-                            <hr class="my-4">
-
-
-
                         </div>
                     </div>
                 </div>
@@ -63,31 +89,31 @@
                     <div class="modal-body">
                         <div class="card-body p-5 text-center">
                             <h3 class="mb-5">Sign up</h3>
-
-                            <div class="form-outline mb-4">
-                                <input type="text" id="typeNameX-2" class="form-control form-control-lg" />
-                                <label class="form-label" for="typeNameX-2">First And Last Name</label>
-                            </div>
-
-
-                            <div class="form-outline mb-4">
-                                <input type="email" id="typeEmailX-2" class="form-control form-control-lg" />
-                                <label class="form-label" for="typeEmailX-2">Email</label>
-                            </div>
-
-                            <div class="form-outline mb-4">
-                                <input type="password" id="typePasswordX-2" class="form-control form-control-lg" />
-                                <label class="form-label" for="typePasswordX-2">Password</label>
-                            </div>
-
-                            <div class="form-outline mb-4">
-                                <input type="password" id="typePasswordX-2" class="form-control form-control-lg" />
-                                <label class="form-label" for="typePasswordX-2">Retype Password</label>
-                            </div>
+                            <form method="POST" action="">
+                                <div class="form-outline mb-4">
+                                    <input type="text" name="name" id="typeNameX-2" class="form-control form-control-lg" required />
+                                    <label class="form-label" for="typeNameX-2">First And Last Name</label>
+                                </div>
 
 
-                            <button class="btn btn-primary btn-lg btn-block" type="submit">Sign up</button>
+                                <div class="form-outline mb-4">
+                                    <input type="email" name="email" id="typeEmailX-2" class="form-control form-control-lg" required />
+                                    <label class="form-label" for="typeEmailX-2">Email</label>
+                                </div>
 
+                                <div class="form-outline mb-4">
+                                    <input type="password" name="password" id="typePasswordX-2" class="form-control form-control-lg" required />
+                                    <label class="form-label" for="typePasswordX-2">Password</label>
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <input type="password" id="typePasswordX-2" class="form-control form-control-lg" required />
+                                    <label class="form-label" for="typePasswordX-2">Retype Password</label>
+                                </div>
+
+
+                                <button class="btn btn-primary btn-lg btn-block" name="submit" type="submit">Confirm</button>
+                            </form>
                         </div>
                     </div>
                 </div>

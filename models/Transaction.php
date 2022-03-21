@@ -15,7 +15,7 @@ class Transaction
      * @param User $user
      * @param array $transactionList
      */
-    public function __construct(int $id, DateTime $date, float $amount, User $user, array $transactionList)
+    public function __construct(int $id = 0, DateTime $date = null, float $amount = 0, User $user = null, array $transactionList = [])
     {
         $this->id = $id;
         $this->date = $date;
@@ -103,7 +103,4 @@ class Transaction
     {
         $this->transactionList = $transactionList;
     }
-
-
-
 }

@@ -13,7 +13,7 @@ class User
      * @param string $email
      * @param string $password
      */
-    public function __construct(int $id, string $name, string $email, string $password)
+    public function __construct(int $id = 1, string $name = "", string $email = "", string $password = "")
     {
         $this->id = $id;
         $this->name = $name;
@@ -85,6 +85,10 @@ class User
         $this->password = $password;
     }
 
+    public static function loginUser($user, mysqli $conn)
+    {
+        $query = "SELECT * FROM users WHERE email='$user->email' and password='$user->password'";
 
-
+        return $conn->query($query);
+    }
 }
