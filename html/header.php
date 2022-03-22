@@ -65,6 +65,10 @@
                                 <label class="form-label" for="typeNameX-2">First And Last Name</label>
                             </div>
 
+                            <div class="form-outline mb-4">
+                                <input type="text" name="adress" id="typeNameX-2" class="form-control form-control-lg" required />
+                                <label class="form-label" for="typeNameX-2">Adress</label>
+                            </div>
 
                             <div class="form-outline mb-4">
                                 <input type="email" name="email" id="typeEmailX-2" class="form-control form-control-lg" required />
