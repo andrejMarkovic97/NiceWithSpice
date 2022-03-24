@@ -6,6 +6,7 @@ class User
     private string $name;
     private string $email;
     private string $password;
+    private string $adress;
 
     /**
      * @param int $id
@@ -13,12 +14,13 @@ class User
      * @param string $email
      * @param string $password
      */
-    public function __construct(int $id = 1, string $name = "", string $email = "", string $password = "")
+    public function __construct(int $id = 1, string $name = "", string $email = "", string $password = "", string $adress = "")
     {
         $this->id = $id;
         $this->name = $name;
         $this->email = $email;
         $this->password = $password;
+        $this->adress = $adress;
     }
 
     /**
@@ -85,10 +87,44 @@ class User
         $this->password = $password;
     }
 
+    /**
+     * @return string
+     */
+    public function getAdress(): string
+    {
+        return $this->adress;
+    }
+
+    /**
+     * @param string $adress
+     */
+    public function setAdress(string $adress): void
+    {
+        $this->adress = $adress;
+    }
+
+
     public static function loginUser($user, mysqli $conn)
     {
         $query = "SELECT * FROM users WHERE email='$user->email' and password='$user->password'";
 
+        return $conn->query($query);
+    }
+
+    public function createUser(User $user,mysqli $conn) {
+        $query = "INSERT INTO users (id,name,email,password,adress) values ($user->id,$user->name,$user->email,$user->password,$user->adress)";
+        return $conn->query($query);
+    }
+
+    public function updateUser(mysqli $conn)
+    {
+        $query = "UPDATE users SET name = $this->name, email = $this->email,password=$this->password WHERE id = $this->id";
+        return $conn->query($query);
+    }
+
+    public function deleteUser(mysqli $conn)
+    {
+        $query = "DELETE FROM users WHERE id=$this->id";
         return $conn->query($query);
     }
 }

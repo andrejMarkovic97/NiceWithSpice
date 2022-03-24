@@ -6,22 +6,19 @@ class Transaction
     private DateTime $date;
     private float $amount;
     private User $user;
-    private array $transactionList = array();
 
     /**
      * @param int $id
      * @param DateTime $date
      * @param float $amount
      * @param User $user
-     * @param array $transactionList
      */
-    public function __construct(int $id = 0, DateTime $date = null, float $amount = 0, User $user = null, array $transactionList = [])
+    public function __construct(int $id =0, DateTime $date=null, float $amount=0, User $user=null)
     {
         $this->id = $id;
         $this->date = $date;
         $this->amount = $amount;
         $this->user = $user;
-        $this->transactionList = $transactionList;
     }
 
     /**
@@ -41,66 +38,58 @@ class Transaction
     }
 
     /**
-     * @return DateTime
+     * @return DateTime|null
      */
-    public function getDate(): DateTime
+    public function getDate(): ?DateTime
     {
         return $this->date;
     }
 
     /**
-     * @param DateTime $date
+     * @param DateTime|null $date
      */
-    public function setDate(DateTime $date): void
+    public function setDate(?DateTime $date): void
     {
         $this->date = $date;
     }
 
     /**
-     * @return float
+     * @return float|int
      */
-    public function getAmount(): float
+    public function getAmount(): float|int
     {
         return $this->amount;
     }
 
     /**
-     * @param float $amount
+     * @param float|int $amount
      */
-    public function setAmount(float $amount): void
+    public function setAmount(float|int $amount): void
     {
         $this->amount = $amount;
     }
 
     /**
-     * @return User
+     * @return User|null
      */
-    public function getUser(): User
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
     /**
-     * @param User $user
+     * @param User|null $user
      */
-    public function setUser(User $user): void
+    public function setUser(?User $user): void
     {
         $this->user = $user;
     }
 
-    /**
-     * @return array
-     */
-    public function getTransactionList(): array
-    {
-        return $this->transactionList;
+    public function createTransaction(Transaction $tran , mysqli $conn) {
+
+        $query = "INSERT INTO transactions (id,date,amount,userID) values ($tran->id,$tran->date,$tran->amount,$tran->user->getId())";
     }
 
-    /**
-     * @param array $transactionList
-     */
-    public function setTransactionList(array $transactionList): void
-    {
-        $this->transactionList = $transactionList;
-    }
+
+
 }
