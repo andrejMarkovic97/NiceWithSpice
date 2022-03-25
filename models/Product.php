@@ -93,17 +93,20 @@ class Product
         return $conn->query($query);
     }
 
-    public function createProduct(Product $prod, mysqli $conn) {
+    public function createProduct(Product $prod, mysqli $conn)
+    {
         $query = "INSERT INTO products(id,name,price,image) values ($prod->id,$prod->name,$prod->price,$prod->image)";
         return $conn->query($query);
     }
 
-    public function updateProduct(Product $prod, mysqli $conn) {
+    public function updateProduct(Product $prod, mysqli $conn)
+    {
         $query = "UPDATE products SET name =$prod->name,price=$prod->price,image=$prod->image WHERE id =$prod->id";
         return $conn->query($query);
     }
 
-    public function deleteProduct(Product $prod, mysqli $conn) {
+    public function deleteProduct(Product $prod, mysqli $conn)
+    {
         $query = "DELETE from products WHERE id = $prod->id";
         return $conn->query($query);
     }

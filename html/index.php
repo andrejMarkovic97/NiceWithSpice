@@ -1,5 +1,5 @@
 <?php
-require "../dbBroker.php";
+require "../db/dbBroker.php";
 require "../models/User.php";
 
 session_start();
@@ -52,10 +52,10 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
                         <div class="card-body p-5 text-center">
 
                             <h3 class="mb-5">Sign in</h3>
-                            <form method="POST" action="">
+                            <form method="POST" action="" id="loginForm">
                                 <div class="form-outline mb-4">
                                     <input type="email" name="email" id="typeEmailX-2" class="form-control form-control-lg" required />
-                                    <label class="form-label" for="typeEmailX-2" required>Email</label>
+                                    <label class="form-label" for="typeEmailX-2">Email</label>
                                 </div>
 
                                 <div class="form-outline mb-4">
@@ -89,7 +89,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
                     <div class="modal-body">
                         <div class="card-body p-5 text-center">
                             <h3 class="mb-5">Sign up</h3>
-                            <form method="POST" action="">
+                            <form method="POST" action="" id="registerForm">
                                 <div class="form-outline mb-4">
                                     <input type="text" name="name" id="typeNameX-2" class="form-control form-control-lg" required />
                                     <label class="form-label" for="typeNameX-2">First And Last Name</label>
@@ -99,6 +99,11 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
                                 <div class="form-outline mb-4">
                                     <input type="email" name="email" id="typeEmailX-2" class="form-control form-control-lg" required />
                                     <label class="form-label" for="typeEmailX-2">Email</label>
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <input type="text" name="adress" id="typeAdressX-2" class="form-control form-control-lg" required />
+                                    <label class="form-label" for="typeAdressX-2">Adress</label>
                                 </div>
 
                                 <div class="form-outline mb-4">

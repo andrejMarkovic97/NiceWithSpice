@@ -1,3 +1,25 @@
+<?php
+require "../db/dbBroker.php";
+include "../models/Product.php";
+$products = Product::getAllProducts($conn);
+
+if (!$products) {
+    echo "Query error";
+    die();
+}
+if ($products->num_rows == 0) {
+    echo "No products available!";
+    die();
+}
+
+
+
+
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,6 +36,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:ital@1&display=swap" rel="stylesheet">
+
 
 </head>
 
@@ -63,7 +86,7 @@
                     <div class="modal-body">
                         <div class="card-body p-5 text-center">
                             <h3 class="mb-5">Add item</h3>
-                            <form method="POST" action="">
+                            <form method="POST" action="" id="addItemForm">
                                 <div class="form-outline mb-4">
                                     <input type="text" name="itemName" id="typeNameX-2" class="form-control form-control-lg" required />
                                     <label class="form-label" for="typeNameX-2">Item name</label>
@@ -77,8 +100,8 @@
 
 
                                 <div class="form-outline mb-4">
-                                    <input type="file" class="form-control-file" id="itemPicture" class="form-control form-control-lg" required>
-                                    <label for="itemPicture">Insert product picture</label>
+                                    <input type="file" name="image" id="itemImage" class="form-control form-control-lg" required>
+                                    <label for="itemImage">Insert product image</label>
 
 
                                 </div>
@@ -96,121 +119,44 @@
 
         <section style="background-color: #eee;">
             <div class="container py-5">
-                <div class="row">
-                    <div class="col-md-12 col-lg-4 mb-4 mb-lg-0">
-                        <div class="card">
+                <?php
+                $count = 0;
+                while ($row = $products->fetch_array()) {
+                    if ($count % 3 === 0) {
 
-                            <img src="/nicewithspice/img/all_purpose.jpg" class="card-img-top" alt="All purpose" />
-                            <div class="card-body">
+                ?>
+                        <div class="row">
 
-                                <div class="d-flex justify-content-between mb-3">
-                                    <h5 class="mb-0">All purpose spice</h5>
-                                    <h5 class="text-dark mb-0">150 RSD</h5>
-                                </div>
 
-                                <div class="d-flex justify-content-between mb-2">
-                                    <button type="button" class="btn btn-outline-danger">Add to cart</button>
+                        <?php } ?>
+                        <!-- CLOSING FIRST IF BRACKET -->
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12 col-lg-4 mb-4 mb-lg-0">
-                        <div class="card">
+                        <div class="col-md-12 col-lg-4 mb-4 mb-lg-0">
+                            <div class="card">
 
-                            <img src="/nicewithspice/img/himalayan_salt.jpg" class="card-img-top" alt="Himalayan salt" />
-                            <div class="card-body">
+                                <img src="<?= $row['image']; ?>" class="card-img-top" />
+                                <div class="card-body">
 
-                                <div class="d-flex justify-content-between mb-3">
-                                    <h5 class="mb-0">Himalayan salt</h5>
-                                    <h5 class="text-dark mb-0">300 RSD</h5>
-                                </div>
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <h5 class="mb-0"><?= $row['name']; ?></h5>
+                                        <h5 class="text-dark mb-0"><?= $row['price']; ?> RSD</h5>
+                                    </div>
 
-                                <div class="d-flex justify-content-between mb-2">
-                                    <button type="button" class="btn btn-outline-danger">Add to cart</button>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <button type="button" class="btn btn-outline-danger">Add to cart</button>
 
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-12 col-lg-4 mb-4 mb-lg-0">
-                        <div class="card">
 
-                            <img src="/nicewithspice/img/mixed_herbs.jpg" class="card-img-top" alt="Mixed herbs" />
-                            <div class="card-body">
-
-                                <div class="d-flex justify-content-between mb-3">
-                                    <h5 class="mb-0">Mixed herbs</h5>
-                                    <h5 class="text-dark mb-0">99 RSD</h5>
-                                </div>
-
-                                <div class="d-flex justify-content-between mb-2">
-                                    <button type="button" class="btn btn-outline-danger">Add to cart</button>
-
-                                </div>
-                            </div>
+                        <?php $count++;
+                        if ($count % 3 == 0) { ?>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container py-5">
-                <div class="row">
-                    <div class="col-md-12 col-lg-4 mb-4 mb-lg-0">
-                        <div class="card">
+                <?php }
+                    } ?>
+                <!-- CLOSING SECOND IF BRACKET AND WHILE -->
 
-                            <img src="/nicewithspice/img/paprika.jpg" class="card-img-top" alt="Paprika" />
-                            <div class="card-body">
-
-                                <div class="d-flex justify-content-between mb-3">
-                                    <h5 class="mb-0">Paprika</h5>
-                                    <h5 class="text-dark mb-0">100 RSD</h5>
-                                </div>
-
-                                <div class="d-flex justify-content-between mb-2">
-                                    <button type="button" class="btn btn-outline-danger">Add to cart</button>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12 col-lg-4 mb-4 mb-lg-0">
-                        <div class="card">
-
-                            <img src="/nicewithspice/img/chilli.jpg" class="card-img-top" alt="Chilli" />
-                            <div class="card-body">
-
-                                <div class="d-flex justify-content-between mb-3">
-                                    <h5 class="mb-0">Chilli</h5>
-                                    <h5 class="text-dark mb-0">100 RSD</h5>
-                                </div>
-
-                                <div class="d-flex justify-content-between mb-2">
-                                    <button type="button" class="btn btn-outline-danger">Add to cart</button>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12 col-lg-4 mb-4 mb-lg-0">
-                        <div class="card">
-
-                            <img src="/nicewithspice/img/rainbow_peppercorn.jpg" class="card-img-top" alt="Rainbow peppercorn" />
-                            <div class="card-body">
-
-                                <div class="d-flex justify-content-between mb-3">
-                                    <h5 class="mb-0">Rainbow peppercorn</h5>
-                                    <h5 class="text-dark mb-0">250 RSD</h5>
-                                </div>
-
-                                <div class="d-flex justify-content-between mb-2">
-                                    <button type="button" class="btn btn-outline-danger">Add to cart</button>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </section>
 
 
@@ -222,7 +168,7 @@
     include "footer.php";
     ?>
 
-    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 
