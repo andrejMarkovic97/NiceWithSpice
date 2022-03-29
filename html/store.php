@@ -1,6 +1,8 @@
 <?php
 require "../db/dbBroker.php";
-include "../models/Product.php";
+require "../models/Product.php";
+
+
 $products = Product::getAllProducts($conn);
 
 if (!$products) {
@@ -36,6 +38,7 @@ if ($products->num_rows == 0) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:ital@1&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 
 </head>
@@ -86,27 +89,27 @@ if ($products->num_rows == 0) {
                     <div class="modal-body">
                         <div class="card-body p-5 text-center">
                             <h3 class="mb-5">Add item</h3>
-                            <form method="POST" action="" id="addItemForm">
+                            <form method="POST" action="" id="addItemForm" enctype="multipart/form-data">
                                 <div class="form-outline mb-4">
-                                    <input type="text" name="itemName" id="typeNameX-2" class="form-control form-control-lg" required />
+                                    <input type="text" name="itemName" id="itemName" class="form-control form-control-lg" required />
                                     <label class="form-label" for="typeNameX-2">Item name</label>
                                 </div>
 
 
                                 <div class="form-outline mb-4">
-                                    <input type="number" step="any" name="price" id="typeNumber" class="form-control form-control-lg" required />
+                                    <input type="number" step="any" name="price" id="itemPrice" class="form-control form-control-lg" required />
                                     <label class="form-label" for="typeNumber">Price</label>
                                 </div>
 
 
                                 <div class="form-outline mb-4">
-                                    <input type="file" name="image" id="itemImage" class="form-control form-control-lg" required>
+                                    <input type="file" name="image" id="itemImage" class="form-control form-control-lg" accept=".jpg, .png, .jpeg" required>
                                     <label for="itemImage">Insert product image</label>
 
 
                                 </div>
 
-                                <button class="btn btn-primary btn-lg btn-block" name="submit" type="submit">Confirm</button>
+                                <button class="btn btn-primary btn-lg btn-block" name="AddItemSubmit" type="submit">Confirm</button>
                             </form>
                         </div>
                     </div>
@@ -151,7 +154,7 @@ if ($products->num_rows == 0) {
                         </div>
 
                         <?php $count++;
-                        if ($count % 3 == 0) { ?>
+                        if ($count % 3 === 0) { ?>
                         </div>
                 <?php }
                     } ?>
@@ -168,8 +171,24 @@ if ($products->num_rows == 0) {
     include "footer.php";
     ?>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+
 </body>
 
 </html>
+<?php
+if (isset($_POST['AddItemSubmit'])) {
+    $name = $_POST['itemName'];
+    $price = $_POST['price'];
+
+    $image = $_FILES['image']['name'];
+    $temp_image = $_FILES['image']['tmp_name'];
+
+    move_uploaded_file($temp_image, "../img/$image");
+
+    $prod = new Product(0, $name, $price, "../img/" . $image);
+    $prod->createProduct($prod, $conn);
+}
+?>

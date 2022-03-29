@@ -85,6 +85,8 @@ class Product
         $this->image = $image;
     }
 
+
+
     public static function getAllProducts(mysqli $conn)
     {
 
