@@ -86,6 +86,13 @@ class Product
     }
 
 
+    public static function getImageByID(int $id, mysqli $conn)
+    {
+        $query = "SELECT image FROM products where id = '$id'";
+
+        return $conn->query($query);
+    }
+
 
     public static function getAllProducts(mysqli $conn)
     {
@@ -111,5 +118,15 @@ class Product
     {
         $query = "DELETE from products WHERE id = $prod->id";
         return $conn->query($query);
+    }
+
+    public static function deleteByID(int $id, mysqli $conn): bool
+    {
+        $query = "DELETE from products WHERE id = '$id'";
+        if ($conn->query($query) === TRUE) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

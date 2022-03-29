@@ -2,7 +2,6 @@
 require "../db/dbBroker.php";
 require "../models/Product.php";
 
-
 $products = Product::getAllProducts($conn);
 
 if (!$products) {
@@ -77,7 +76,7 @@ if ($products->num_rows == 0) {
                 </ul>
             </span>
             <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addItem">Add item</button>
-            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteItem">Delete item</button>
+
         </div>
         <div class="modal fade" id="addItem" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -125,6 +124,7 @@ if ($products->num_rows == 0) {
                 <?php
                 $count = 0;
                 while ($row = $products->fetch_array()) {
+                    $product = new Product($row['id'], $row['name'], $row['price'], $row['image']);
                     if ($count % 3 === 0) {
 
                 ?>
@@ -137,16 +137,20 @@ if ($products->num_rows == 0) {
                         <div class="col-md-12 col-lg-4 mb-4 mb-lg-0">
                             <div class="card">
 
-                                <img src="<?= $row['image']; ?>" class="card-img-top" />
+
+                                <img src="<?= $product->getImage() ?>" class="card-img-top" alt="<?= $product->getName() ?> image" />
                                 <div class="card-body">
 
                                     <div class="d-flex justify-content-between mb-3">
-                                        <h5 class="mb-0"><?= $row['name']; ?></h5>
-                                        <h5 class="text-dark mb-0"><?= $row['price']; ?> RSD</h5>
+                                        <h5 class="mb-0"><?= $product->getName() ?></h5>
+                                        <h5 class="text-dark mb-0"><?= $product->getPrice() ?> RSD</h5>
                                     </div>
 
                                     <div class="d-flex justify-content-between mb-2">
-                                        <button type="button" class="btn btn-outline-danger">Add to cart</button>
+                                        <button type="button" name="addToCart" class="btn btn-primary">Add to cart</button>
+
+                                        <button type="button" name="deleteItem" onclick="deleteProduct(<?php echo $product->getId() ?>)" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteItem">Delete item</button>
+
 
                                     </div>
                                 </div>
@@ -173,22 +177,27 @@ if ($products->num_rows == 0) {
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
+    <script src="../js/main.js"></script>
 
 </body>
 
 </html>
 <?php
 if (isset($_POST['AddItemSubmit'])) {
-    $name = $_POST['itemName'];
-    $price = $_POST['price'];
+    if (isset($_POST['itemName']) && isset($_POST['price']) && isset($_POST['image'])) {
+        $name = $_POST['itemName'];
+        $price = $_POST['price'];
 
-    $image = $_FILES['image']['name'];
-    $temp_image = $_FILES['image']['tmp_name'];
+        $image = $_FILES['image']['name'];
+        $temp_image = $_FILES['image']['tmp_name'];
 
-    move_uploaded_file($temp_image, "../img/$image");
+        move_uploaded_file($temp_image, "../img/$image");
 
-    $prod = new Product(0, $name, $price, "../img/" . $image);
-    $prod->createProduct($prod, $conn);
+        $prod = new Product(0, $name, $price, "../img/" . $image);
+        $prod->createProduct($prod, $conn);
+    }
 }
+
+
+
 ?>
