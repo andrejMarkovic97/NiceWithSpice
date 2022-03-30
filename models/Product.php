@@ -104,7 +104,7 @@ class Product
 
     public function createProduct(Product $prod, mysqli $conn)
     {
-        $query = "INSERT INTO products(id,name,price,image) values ($prod->id,$prod->name,$prod->price,$prod->image)";
+        $query = "INSERT INTO products(name,price,image) values ('$prod->name','$prod->price','$prod->image')";
         return $conn->query($query);
     }
 
@@ -128,5 +128,12 @@ class Product
         } else {
             return false;
         }
+    }
+
+    public static function getAllPriceSorted(mysqli $conn, $filter)
+    {
+
+        $query = "SELECT * FROM products ORDER by price '$filter'";
+        return $conn->query($query);
     }
 }

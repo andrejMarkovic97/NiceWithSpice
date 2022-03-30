@@ -11,4 +11,24 @@ function deleteProduct(id) {
             location.reload();
         }
     });
-}
+};
+
+$('.sortButton').click(function () {
+    var val = $(this).val();
+
+    $.ajax({
+        url: "../handler/sort.php",
+        type: "POST",
+        data: {
+            filter: val,
+        },
+        success: function (data) {
+            console.log("Success");
+            location.reload();
+        }
+
+    });
+});
+
+
+

@@ -3,6 +3,7 @@ require "../db/dbBroker.php";
 require "../models/User.php";
 
 session_start();
+$_SESSION['userID'] = "";
 if (isset($_POST['email']) && isset($_POST['password'])) {
     $email = $_POST['email'];
     $pass = $_POST['password'];
@@ -12,7 +13,13 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     $odg = User::loginUser($user, $conn);
 
     if ($odg->num_rows == 1) {
-        $_SESSION['user_id'] = $user->getId();
+        while ($row = $odg->fetch_array()) {
+            $user->setId($row['id']);
+            $user->setName($row['name']);
+            $user->setAdress($row['adress']);
+        }
+        $_SESSION['userID'] = $user->getId();
+        $_SESSION['sort'] = 0;
         header('Location: landing.php');
         exit();
     } else {

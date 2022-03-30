@@ -1,8 +1,11 @@
 <?php
 require "../db/dbBroker.php";
 require "../models/Product.php";
+require "../models/Cart.php";
 
 $products = Product::getAllProducts($conn);
+
+
 
 if (!$products) {
     echo "Query error";
@@ -38,7 +41,7 @@ if ($products->num_rows == 0) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:ital@1&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
+    <script src="../js/main.js"></script>
 
 </head>
 
@@ -69,10 +72,8 @@ if ($products->num_rows == 0) {
                     Sort
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <li><button class="dropdown-item" type="button">Price ascending</button></li>
-                    <li><button class="dropdown-item" type="button">Price descending</button></li>
-                    <li><button class="dropdown-item" type="button">Product title, A-Z</button></li>
-                    <li><button class="dropdown-item" type="button">Product title, Z-A</button></li>
+                    <li><button class="dropdown-item" id="sortAscending" type=" button">Price ascending</button></li>
+                    <li><button class=" dropdown-item" id="sortDescending" type="button">Price descending</button></li>
                 </ul>
             </span>
             <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addItem">Add item</button>
@@ -122,6 +123,7 @@ if ($products->num_rows == 0) {
         <section style="background-color: #eee;">
             <div class="container py-5">
                 <?php
+
                 $count = 0;
                 while ($row = $products->fetch_array()) {
                     $product = new Product($row['id'], $row['name'], $row['price'], $row['image']);
@@ -147,7 +149,12 @@ if ($products->num_rows == 0) {
                                     </div>
 
                                     <div class="d-flex justify-content-between mb-2">
-                                        <button type="button" name="addToCart" class="btn btn-primary">Add to cart</button>
+                                        <form action="" method="POST">
+                                            <input type="hidden" name="product_id" value="<?php echo $product->getId() ?>">
+                                            <input type="hidden" name="user_id" value="<?php echo $user ?> ?>">
+                                            <button type="submit" name="addToCart" id="addCart" name="addToCart" class="btn btn-primary">Add to cart</button>
+                                        </form>
+
 
                                         <button type="button" name="deleteItem" onclick="deleteProduct(<?php echo $product->getId() ?>)" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteItem">Delete item</button>
 
@@ -177,7 +184,8 @@ if ($products->num_rows == 0) {
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src="../js/main.js"></script>
+
+
 
 </body>
 
@@ -191,12 +199,18 @@ if (isset($_POST['AddItemSubmit'])) {
         $image = $_FILES['image']['name'];
         $temp_image = $_FILES['image']['tmp_name'];
 
-        move_uploaded_file($temp_image, "../img/$image");
+        move_uploaded_file($temp_image, "../img/" . $image);
 
         $prod = new Product(0, $name, $price, "../img/" . $image);
         $prod->createProduct($prod, $conn);
     }
 }
+/*if (isset($_POST['addToCart'])) {
+    if (isset($_POST['product_id']) && isset($_POST['user_id'])) {
+        Cart::addToCart($_POST['user_id'], $_POST['product_id'], $conn);
+    }
+}
+*/
 
 
 
