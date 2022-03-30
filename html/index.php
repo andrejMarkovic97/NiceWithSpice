@@ -3,7 +3,10 @@ require "../db/dbBroker.php";
 require "../models/User.php";
 
 session_start();
+
 $_SESSION['userID'] = "";
+
+$_SESSION['sort'] = 0;
 if (isset($_POST['email']) && isset($_POST['password'])) {
     $email = $_POST['email'];
     $pass = $_POST['password'];
@@ -19,7 +22,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
             $user->setAdress($row['adress']);
         }
         $_SESSION['userID'] = $user->getId();
-        $_SESSION['sort'] = 0;
+
         header('Location: landing.php');
         exit();
     } else {

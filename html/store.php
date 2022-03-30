@@ -2,8 +2,16 @@
 require "../db/dbBroker.php";
 require "../models/Product.php";
 require "../models/Cart.php";
+include "../debug.php";
+session_start();
 
-$products = Product::getAllProducts($conn);
+if ($_SESSION['sort'] == 0) {
+    $_SESSION['products'] =  Product::getAllProducts($conn);
+}
+
+$vrijednost = $_SESSION['sort'];
+debug($vrijednost);
+$products = $_SESSION['products'];
 
 
 
@@ -72,8 +80,11 @@ if ($products->num_rows == 0) {
                     Sort
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <li><button class="dropdown-item" id="sortAscending" type=" button">Price ascending</button></li>
-                    <li><button class=" dropdown-item" id="sortDescending" type="button">Price descending</button></li>
+
+                    <li><button class="dropdown-item sortButton" onclick="sortAsc();" value="ASC" id="sortAscending" name="ASC" type="button">Price ascending</button></li>
+                    <li><button class=" dropdown-item sortButton" value="DESC" id="sortDescending" type="button">Price descending</button></li>
+
+
                 </ul>
             </span>
             <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addItem">Add item</button>
@@ -205,12 +216,14 @@ if (isset($_POST['AddItemSubmit'])) {
 }
 
 
-/*if (isset($_POST['addToCart'])) {
+if (isset($_POST['addToCart'])) {
     if (isset($_POST['product_id']) && isset($_POST['user_id'])) {
         Cart::addToCart($_POST['user_id'], $_POST['product_id'], $conn);
     }
 }
-*/
+
+
+
 
 
 

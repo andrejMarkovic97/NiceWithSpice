@@ -13,22 +13,20 @@ function deleteProduct(id) {
     });
 };
 
-$('.sortButton').click(function () {
-    var val = $(this).val();
-
+function sortAsc() {
     $.ajax({
-        url: "../handler/sort.php",
-        type: "POST",
-        data: {
-            filter: val,
-        },
+        type: 'POST',
+        url: '../handler/sort.php',
+        data: { filter: "ASC" },
         success: function (data) {
             console.log("Success");
             location.reload();
+        },
+        error: function (data) {
+            console.log("failure");
         }
-
     });
-});
+}
 
 
 
