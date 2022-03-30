@@ -192,19 +192,19 @@ if ($products->num_rows == 0) {
 </html>
 <?php
 if (isset($_POST['AddItemSubmit'])) {
-    if (isset($_POST['itemName']) && isset($_POST['price']) && isset($_POST['image'])) {
-        $name = $_POST['itemName'];
-        $price = $_POST['price'];
+    $name = $_POST['itemName'];
+    $price = $_POST['price'];
 
-        $image = $_FILES['image']['name'];
-        $temp_image = $_FILES['image']['tmp_name'];
+    $image = $_FILES['image']['name'];
+    $temp_image = $_FILES['image']['tmp_name'];
 
-        move_uploaded_file($temp_image, "../img/" . $image);
+    move_uploaded_file($temp_image, "../img/$image");
 
-        $prod = new Product(0, $name, $price, "../img/" . $image);
-        $prod->createProduct($prod, $conn);
-    }
+    $prod = new Product(0, $name, $price, "../img/" . $image);
+    $prod->createProduct($prod, $conn);
 }
+
+
 /*if (isset($_POST['addToCart'])) {
     if (isset($_POST['product_id']) && isset($_POST['user_id'])) {
         Cart::addToCart($_POST['user_id'], $_POST['product_id'], $conn);
