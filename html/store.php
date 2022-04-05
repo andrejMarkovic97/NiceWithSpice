@@ -9,18 +9,14 @@ if ($_SESSION['sort'] == 0) {
     $_SESSION['products'] =  Product::getAllProducts($conn);
 }
 
-$vrijednost = $_SESSION['sort'];
-debug($vrijednost);
+
+
 $products = $_SESSION['products'];
 
 
 
-if (!$products) {
-    echo "Query error";
-    die();
-}
-if ($products->num_rows == 0) {
-    echo "No products available!";
+if (sizeof($products) === 0) {
+    echo "NO PRODUCTS!";
     die();
 }
 
@@ -79,13 +75,17 @@ if ($products->num_rows == 0) {
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
                     Sort
                 </button>
+
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
 
-                    <li><button class="dropdown-item sortButton" onclick="sortAsc();" value="ASC" id="sortAscending" name="ASC" type="button">Price ascending</button></li>
-                    <li><button class=" dropdown-item sortButton" value="DESC" id="sortDescending" type="button">Price descending</button></li>
+                    <li><button class="dropdown-item sortButton" name="ASC" id="sortAscending" type="submit" value="asc">Price ascending</button></li>
+                    <li><button class=" dropdown-item sortButton" name="DESC" id="sortDescending" type="submit" value="desc">Price descending</button></li>
 
 
                 </ul>
+
+
+
             </span>
             <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addItem">Add item</button>
 
@@ -136,8 +136,7 @@ if ($products->num_rows == 0) {
                 <?php
 
                 $count = 0;
-                while ($row = $products->fetch_array()) {
-                    $product = new Product($row['id'], $row['name'], $row['price'], $row['image']);
+                foreach ($products as $product) {
                     if ($count % 3 === 0) {
 
                 ?>
@@ -195,7 +194,24 @@ if ($products->num_rows == 0) {
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script>
+        $('.sortButton').click(function() {
+            var val = $(this).val();
 
+            $.ajax({
+
+                type: "GET",
+                data: {
+                    filter: val,
+                },
+                success: function(data) {
+                    console.log("Success");
+                    location.reload();
+                }
+
+            });
+        });
+    </script>
 
 
 </body>
@@ -222,7 +238,11 @@ if (isset($_POST['addToCart'])) {
     }
 }
 
-
+if (isset($_GET['filter'])) {
+    $filter = $_GET['filter'];
+    $_SESSION['sort'] = 1;
+    $_SESSION['products'] = Product::getAllPriceSorted($conn, $filter);
+}
 
 
 

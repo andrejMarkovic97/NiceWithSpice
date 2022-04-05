@@ -96,10 +96,17 @@ class Product
 
     public static function getAllProducts(mysqli $conn)
     {
+        $products = [];
 
         $query = "SELECT * FROM products";
 
-        return $conn->query($query);
+        $res = $conn->query($query);
+
+        while ($row = $res->fetch_array()) {
+            $prod = new Product($row['id'], $row['name'], $row['price'], $row['image']);
+            array_push($products, $prod);
+        }
+        return $products;
     }
 
     public function createProduct(Product $prod, mysqli $conn)
@@ -133,7 +140,16 @@ class Product
     public static function getAllPriceSorted(mysqli $conn, $filter)
     {
 
-        $query = "SELECT * FROM products ORDER by price '$filter'";
-        return $conn->query($query);
+        $products = [];
+
+        $query = "SELECT * FROM products ORDER BY price " . $filter;
+
+        $res = $conn->query($query);
+
+        while ($row = $res->fetch_array()) {
+            $prod = new Product($row['id'], $row['name'], $row['price'], $row['image']);
+            array_push($products, $prod);
+        }
+        return $products;
     }
 }

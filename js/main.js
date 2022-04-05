@@ -12,21 +12,21 @@ function deleteProduct(id) {
         }
     });
 };
+$('.sortButton').click(function () {
+    var val = $(this).val();
 
-function sortAsc() {
     $.ajax({
-        type: 'POST',
-        url: '../handler/sort.php',
-        data: { filter: "ASC" },
+
+        type: "GET",
+        data: {
+            filter: val,
+        },
         success: function (data) {
             console.log("Success");
             location.reload();
-        },
-        error: function (data) {
-            console.log("failure");
         }
-    });
-}
 
+    });
+});
 
 
