@@ -2,12 +2,16 @@
 require "../db/dbBroker.php";
 require "../models/User.php";
 
-session_start();
+if (!isset($_SESSION)) {
+    session_start();
+}
+
 
 $_SESSION['userID'] = "";
 
 $_SESSION['sort'] = 0;
-if (isset($_POST['email']) && isset($_POST['password'])) {
+
+if (isset($_POST['loginSubmit'])) {
     $email = $_POST['email'];
     $pass = $_POST['password'];
 
@@ -27,16 +31,33 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         exit();
     } else {
         echo '<script>
-        alert("Invalid credentials !");
-        </script>';
+    alert("Invalid credentials !");
+    </script>';
     }
 }
 
-
-
-
-
+if (isset($_POST['registrationSubmit'])) {
+    $name = $_POST['regName'];
+    $email = $_POST['regEmail'];
+    $adress = $_POST['regAdress'];
+    $password = $_POST['regPassword'];
+    $retype = $_POST['retype'];
+    if ($password === $retype) {
+        $user = new User(0, $name, $email, $password, $adress);
+        $id = $user->createUser($user, $conn);
+        $user->setId($id);
+        $_SESSION['userID'] = $user->getId();
+        header('Location: landing.php');
+        exit();
+    } else {
+        echo '<script>
+        alert("Passwords are not matching !");
+        </script>';
+    }
+}
 ?>
+
+
 
 <!doctype html>
 <html lang="en">
@@ -74,13 +95,14 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
                                 </div>
 
 
-                                <button class="btn btn-primary btn-lg btn-block" name="submit" type="submit">Login</button>
+                                <button class="btn btn-primary btn-lg btn-block" name="loginSubmit" type="submit">Login</button>
 
 
 
                                 <hr class="my-4">
 
                             </form>
+
                             <h4 class="mb-4">No account? Register:</h4>
                             <button class="btn btn-primary btn-lg btn-block" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Sign up</button>
                         </div>
@@ -101,33 +123,33 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
                             <h3 class="mb-5">Sign up</h3>
                             <form method="POST" action="" id="registerForm">
                                 <div class="form-outline mb-4">
-                                    <input type="text" name="name" id="typeNameX-2" class="form-control form-control-lg" required />
+                                    <input type="text" name="regName" id="typeNameX-2" class="form-control form-control-lg" required />
                                     <label class="form-label" for="typeNameX-2">First And Last Name</label>
                                 </div>
 
 
                                 <div class="form-outline mb-4">
-                                    <input type="email" name="email" id="typeEmailX-2" class="form-control form-control-lg" required />
+                                    <input type="email" name="regEmail" id="typeEmailX-2" class="form-control form-control-lg" required />
                                     <label class="form-label" for="typeEmailX-2">Email</label>
                                 </div>
 
                                 <div class="form-outline mb-4">
-                                    <input type="text" name="adress" id="typeAdressX-2" class="form-control form-control-lg" required />
+                                    <input type="text" name="regAdress" id="typeAdressX-2" class="form-control form-control-lg" required />
                                     <label class="form-label" for="typeAdressX-2">Adress</label>
                                 </div>
 
                                 <div class="form-outline mb-4">
-                                    <input type="password" name="password" id="typePasswordX-2" class="form-control form-control-lg" required />
+                                    <input type="password" name="regPassword" id="typePasswordX-2" class="form-control form-control-lg" required />
                                     <label class="form-label" for="typePasswordX-2">Password</label>
                                 </div>
 
                                 <div class="form-outline mb-4">
-                                    <input type="password" id="typePasswordX-2" class="form-control form-control-lg" required />
+                                    <input type="password" id="typePasswordX-2" name="retype" class="form-control form-control-lg" required />
                                     <label class="form-label" for="typePasswordX-2">Retype Password</label>
                                 </div>
 
 
-                                <button class="btn btn-primary btn-lg btn-block" name="submit" type="submit">Confirm</button>
+                                <button class="btn btn-primary btn-lg btn-block" name="registrationSubmit" type="submit">Confirm</button>
                             </form>
                         </div>
                     </div>

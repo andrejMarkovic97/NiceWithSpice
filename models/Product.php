@@ -152,4 +152,19 @@ class Product
         }
         return $products;
     }
+
+    public static function getById($productID, mysqli $conn)
+    {
+
+        $product = null;
+
+        $query = "SELECT * FROM products where id = '$productID'";
+
+        $res = $conn->query($query);
+
+        while ($row = $res->fetch_array()) {
+            $product = new Product($row['id'], $row['name'], $row['price'], $row['image']);
+        }
+        return $product;
+    }
 }

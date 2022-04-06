@@ -1,14 +1,25 @@
+<?php
+require "../db/dbBroker.php";
+require "../models/User.php";
+require "../models/Cart.php";
+require "../models/Product.php";
+
+
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+?>
+
+
 <nav class="navbar navbar-expand-lg">
     <div class="container">
-        <a class="navbar-brand" href="#">Nice With Spice</a>
+        <a class="navbar-brand" href="landing.php">Nice With Spice</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
             <i class="bi bi-chevron-double-down"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarScroll">
             <ul class="navbar-nav m-auto my-2 my-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" href='landing.php'>Home</a>
-                </li>
                 <li class=" nav-item">
                     <a class="nav-link" href="store.php">Store</a>
                 </li>
@@ -21,7 +32,7 @@
 
             </ul>
             <span class="cart">
-                <a class="nav-link active" href="cart.php">
+                <a class="nav-link active" href="cartPage.php">
                     <i class="bi bi-cart3"></i>
                 </a>
             </span>
@@ -34,7 +45,7 @@
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Update account</a></li>
                         <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteAccount">Delete account</a></li>
-                        <li><a class="dropdown-item" href="#">Log out</a></li>
+                        <li><a class=" dropdown-item" href="index.php" onclick="logOut(<?php echo $_SESSION['userID'] ?>)">Log out</a></li>
                     </ul>
                 </span>
 
@@ -81,12 +92,12 @@
                             </div>
 
                             <div class="form-outline mb-4">
-                                <input type="password" id="typePasswordX-2" class="form-control form-control-lg" required />
+                                <input type="password" name="retype" id="typePasswordX-2" class="form-control form-control-lg" required />
                                 <label class="form-label" for="typePasswordX-2">Retype Password</label>
                             </div>
 
 
-                            <button class="btn btn-primary btn-lg btn-block" name="submit" type="submit">Confirm</button>
+                            <button class="btn btn-primary btn-lg btn-block" name="submitUpdateAccount" type="submit">Confirm</button>
                         </form>
                     </div>
                 </div>
@@ -107,17 +118,17 @@
                         <form method="POST" action="">
 
                             <div class="form-outline mb-4">
-                                <input type="password" name="password" id="typePasswordX-2" class="form-control form-control-lg" required />
-                                <label class="form-label" for="typePasswordX-2">Password</label>
+                                <input type="password" name="delPassword" id="typePasswordX-2" class="form-control form-control-lg" required />
+                                <label class="form-label" for=" typePasswordX-2">Password</label>
                             </div>
 
                             <div class="form-outline mb-4">
-                                <input type="password" id="typePasswordX-2" class="form-control form-control-lg" required />
-                                <label class="form-label" for="typePasswordX-2">Retype Password</label>
+                                <input type="password" name="delRetype" id="typePasswordX-2" class="form-control form-control-lg" required />
+                                <label class="form-label" for=" typePasswordX-2">Retype Password</label>
                             </div>
 
 
-                            <button class="btn btn-danger btn-lg btn-block" name="submit" type="submit">Confirm</button>
+                            <button class="btn btn-danger btn-lg btn-block" name="deleteSubmit" type="submit">Confirm</button>
                         </form>
                     </div>
                 </div>
@@ -125,3 +136,63 @@
         </div>
     </div>
 </nav>
+
+<script>
+    function logOut(id) {
+        $.ajax({
+            type: "POST",
+            data: {
+                logOut: id,
+            },
+            success: function(data) {
+                console.log(logOut);
+                console.log("Success");
+
+            }
+        });
+    };
+</script>
+
+<?php
+if (isset($_POST['logOut'])) {
+    Cart::deleteFromCartID($_SESSION['userID'], $conn);
+    session_destroy();
+    header('location:index.php');
+}
+
+if (isset($_POST['submitUpdateAccount'])) {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $adress = $_POST['adress'];
+    $password = $_POST['password'];
+    $retype = $_POST['retype'];
+    if ($password === $retype) {
+        $user = new User($_SESSION['userID'], $name, $email, $password, $adress);
+        $user->updateUser($user, $conn);
+        echo '<script>
+    alert("Update successful !");
+    </script>';
+    } else {
+        echo '<script>
+    alert("Passwords do not match !");
+    </script>';
+    }
+}
+
+if (isset($_POST['deleteSubmit'])) {
+    $password = $_POST['delPassword'];
+    $retype = $_POST['delRetype'];
+    if ($password == $retype) {
+        Cart::deleteFromCartID($_SESSION['userID'], $conn);
+        User::deleteUser($_SESSION['userID'], $conn);
+
+        session_destroy();
+        header('location:index.php');
+    } else {
+        echo '<script>
+        alert("Passwords do not match !");
+        </script>';
+    }
+}
+
+?>

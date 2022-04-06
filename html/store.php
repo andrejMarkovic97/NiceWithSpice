@@ -1,33 +1,3 @@
-<?php
-require "../db/dbBroker.php";
-require "../models/Product.php";
-require "../models/Cart.php";
-include "../debug.php";
-session_start();
-
-if ($_SESSION['sort'] == 0) {
-    $_SESSION['products'] =  Product::getAllProducts($conn);
-}
-
-
-
-$products = $_SESSION['products'];
-
-
-
-if (sizeof($products) === 0) {
-    echo "NO PRODUCTS!";
-    die();
-}
-
-
-
-
-
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,7 +24,26 @@ if (sizeof($products) === 0) {
 
     <?php
     include "header.php";
+
+    if (!isset($_SESSION)) {
+        session_start();
+    }
+    if ($_SESSION['sort'] == 0) {
+        $_SESSION['products'] =  Product::getAllProducts($conn);
+    }
+
+
+
+    $products = $_SESSION['products'];
+
+
+
+    if (sizeof($products) === 0) {
+        echo "NO PRODUCTS!";
+        die();
+    }
     ?>
+
 
 
 
@@ -159,10 +148,10 @@ if (sizeof($products) === 0) {
                                     </div>
 
                                     <div class="d-flex justify-content-between mb-2">
-                                        <form action="" method="POST">
-                                            <input type="hidden" name="product_id" value="<?php echo $product->getId() ?>">
-                                            <input type="hidden" name="user_id" value="<?php echo $user ?> ?>">
-                                            <button type="submit" name="addToCart" id="addCart" name="addToCart" class="btn btn-primary">Add to cart</button>
+                                        <form action="" method="POST" class="addToCartForm">
+                                            <input type="hidden" name="product_id" value="<?= $product->getId() ?>">
+
+                                            <button type="submit" name="addToCart" id="addCart" class="btn btn-primary">Add to cart</button>
                                         </form>
 
 
@@ -195,7 +184,8 @@ if (sizeof($products) === 0) {
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script>
-        $('.sortButton').click(function() {
+        $('.sortButton').click(function(e) {
+            e.preventDefault();
             var val = $(this).val();
 
             $.ajax({
@@ -233,9 +223,11 @@ if (isset($_POST['AddItemSubmit'])) {
 
 
 if (isset($_POST['addToCart'])) {
-    if (isset($_POST['product_id']) && isset($_POST['user_id'])) {
-        Cart::addToCart($_POST['user_id'], $_POST['product_id'], $conn);
-    }
+    Cart::addToCart($_SESSION['userID'], $_POST['product_id'], $conn);
+    echo '<script>alert("Product added to cart !")</script>';
+?>
+
+<?php
 }
 
 if (isset($_GET['filter'])) {

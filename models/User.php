@@ -111,20 +111,24 @@ class User
         return $conn->query($query);
     }
 
-    public function createUser(User $user,mysqli $conn) {
-        $query = "INSERT INTO users (id,name,email,password,adress) values ($user->id,$user->name,$user->email,$user->password,$user->adress)";
+    public function createUser(User $user, mysqli $conn)
+    {
+        $id = null;
+        $query = "INSERT INTO users (name,email,password,adress) values ('$user->name','$user->email','$user->password','$user->adress')";
+        $conn->query($query);
+        $id = $conn->insert_id;
+        return $id;
+    }
+
+    public function updateUser($user, mysqli $conn)
+    {
+        $query = "UPDATE users SET name = '$user->name', email = '$user->email',password= '$user->password' WHERE id = '$user->id'";
         return $conn->query($query);
     }
 
-    public function updateUser(mysqli $conn)
+    public static function deleteUser($id, mysqli $conn)
     {
-        $query = "UPDATE users SET name = $this->name, email = $this->email,password=$this->password WHERE id = $this->id";
-        return $conn->query($query);
-    }
-
-    public function deleteUser(mysqli $conn)
-    {
-        $query = "DELETE FROM users WHERE id=$this->id";
+        $query = "DELETE FROM users WHERE id='$id'";
         return $conn->query($query);
     }
 }

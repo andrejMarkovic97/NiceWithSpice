@@ -12,21 +12,14 @@ function deleteProduct(id) {
         }
     });
 };
-$('.sortButton').click(function () {
-    var val = $(this).val();
-
-    $.ajax({
-
-        type: "GET",
-        data: {
-            filter: val,
-        },
-        success: function (data) {
-            console.log("Success");
-            location.reload();
-        }
-
-    });
+$('.addToCartForm').submit(function (e) {
+    e.preventDefault();
 });
+
+$('.addToCart').click(function (e) {
+    alert("Product added to cart !");
+})
+
+
 
 

@@ -19,4 +19,16 @@ class Cart
         $query = "DELETE FROM cart WHERE product_id ='$productID' and user_id='$userID'";
         return $conn->query($query);
     }
+
+    public static function getAllById($userID, mysqli $conn)
+    {
+        $query = "SELECT * from cart where user_id = '$userID'";
+        return $conn->query($query);
+    }
+
+    public static function deleteFromCartID($userID, mysqli $conn)
+    {
+        $query = "DELETE FROM cart WHERE user_id ='$userID'";
+        return $conn->query($query);
+    }
 }
