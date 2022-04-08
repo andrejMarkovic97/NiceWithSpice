@@ -167,4 +167,19 @@ class Product
         }
         return $product;
     }
+
+    public static function searchProducts($filter, mysqli $conn)
+    {
+        $products = [];
+
+        $query = "SELECT * FROM products where name like '%" . $filter . "%'";
+
+        $res = $conn->query($query);
+
+        while ($row = $res->fetch_array()) {
+            $prod = new Product($row['id'], $row['name'], $row['price'], $row['image']);
+            array_push($products, $prod);
+        }
+        return $products;
+    }
 }

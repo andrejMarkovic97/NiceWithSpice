@@ -4,10 +4,63 @@ require "../models/User.php";
 require "../models/Cart.php";
 require "../models/Product.php";
 
-
 if (!isset($_SESSION)) {
     session_start();
 }
+
+
+if (isset($_POST['logOut'])) {
+    Cart::deleteFromCartID($_SESSION['userID'], $conn);
+    unset($_SESSION['userID']);
+    unset($_SESSION['products']);
+    unset($_SESSION['sort']);
+    unset($_SESSION['search']);
+    header('location:index.php');
+}
+
+if (isset($_POST['submitUpdateAccount'])) {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $adress = $_POST['adress'];
+    $password = $_POST['password'];
+    $retype = $_POST['retype'];
+    if ($password === $retype) {
+        $user = new User($_SESSION['userID'], $name, $email, $password, $adress);
+        $user->updateUser($user, $conn);
+        echo '<script>
+    alert("Update successful !");
+    </script>';
+    } else {
+        echo '<script>
+    alert("Passwords do not match !");
+    </script>';
+    }
+}
+
+if (isset($_POST['deleteSubmit'])) {
+    $password = $_POST['delPassword'];
+    $retype = $_POST['delRetype'];
+    if ($password == $retype) {
+        Cart::deleteFromCartID($_SESSION['userID'], $conn);
+        User::deleteUser($_SESSION['userID'], $conn);
+
+        session_destroy();
+        header('location:index.php');
+    } else {
+        echo '<script>
+        alert("Passwords do not match !");
+        </script>';
+    }
+}
+
+if (isset($_GET['submitSearch'])) {
+    $filter = $_GET['find'];
+    if (strlen($filter) > 0) {
+        $_SESSION['search'] = $filter;
+        header('location:store.php');
+    }
+}
+
 
 ?>
 
@@ -52,11 +105,10 @@ if (!isset($_SESSION)) {
             </div>
 
 
+            <form class="d-flex" method="get">
 
-            <form class="d-flex">
-
-                <input class="px-2 search" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn0" type="submit">Search</button>
+                <input class="px-2 search" type="search" name="find" placeholder="Search" aria-label="Search">
+                <button class="btn0" type="submit" name="submitSearch" href="store.php">Search</button>
             </form>
         </div>
     </div>
@@ -152,47 +204,3 @@ if (!isset($_SESSION)) {
         });
     };
 </script>
-
-<?php
-if (isset($_POST['logOut'])) {
-    Cart::deleteFromCartID($_SESSION['userID'], $conn);
-    session_destroy();
-    header('location:index.php');
-}
-
-if (isset($_POST['submitUpdateAccount'])) {
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $adress = $_POST['adress'];
-    $password = $_POST['password'];
-    $retype = $_POST['retype'];
-    if ($password === $retype) {
-        $user = new User($_SESSION['userID'], $name, $email, $password, $adress);
-        $user->updateUser($user, $conn);
-        echo '<script>
-    alert("Update successful !");
-    </script>';
-    } else {
-        echo '<script>
-    alert("Passwords do not match !");
-    </script>';
-    }
-}
-
-if (isset($_POST['deleteSubmit'])) {
-    $password = $_POST['delPassword'];
-    $retype = $_POST['delRetype'];
-    if ($password == $retype) {
-        Cart::deleteFromCartID($_SESSION['userID'], $conn);
-        User::deleteUser($_SESSION['userID'], $conn);
-
-        session_destroy();
-        header('location:index.php');
-    } else {
-        echo '<script>
-        alert("Passwords do not match !");
-        </script>';
-    }
-}
-
-?>

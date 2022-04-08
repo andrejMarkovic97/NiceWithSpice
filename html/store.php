@@ -25,12 +25,32 @@
     <?php
     include "header.php";
 
+    $pageRefreshed = isset($_SERVER['HTTP_CACHE_CONTROL']) && ($_SERVER['HTTP_CACHE_CONTROL'] === 'max-age=0' ||  $_SERVER['HTTP_CACHE_CONTROL'] == 'no-cache');
+    if ($pageRefreshed == 1) {
+        $_SESSION['search'] = 0;
+    }
     if (!isset($_SESSION)) {
         session_start();
     }
-    if ($_SESSION['sort'] == 0) {
+
+
+    if ($_SESSION['sort'] == 0 && $_SESSION['search'] == 0) {
         $_SESSION['products'] =  Product::getAllProducts($conn);
     }
+
+    if ($_SESSION['search'] != 0) {
+        $filter = $_SESSION['search'];
+        $prod = Product::searchProducts($filter, $conn);
+        if (sizeof($prod) > 0) {
+            $_SESSION['products'] = $prod;
+        } else {
+
+            echo '<script>
+                alert("No such product !");
+                </script>';
+        }
+    }
+
 
 
 
@@ -167,7 +187,10 @@
                         if ($count % 3 === 0) { ?>
                         </div>
                 <?php }
-                    } ?>
+                    }
+
+
+                ?>
                 <!-- CLOSING SECOND IF BRACKET AND WHILE -->
 
         </section>
@@ -235,7 +258,6 @@ if (isset($_GET['filter'])) {
     $_SESSION['sort'] = 1;
     $_SESSION['products'] = Product::getAllPriceSorted($conn, $filter);
 }
-
 
 
 
